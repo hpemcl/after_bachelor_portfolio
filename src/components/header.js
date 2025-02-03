@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom';
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Funktion til at lukke menuen, når et link klikkes
+  const closeMenu = () => setIsOpen(false);
+
   return (
     <header className="bg-white p-4 flex justify-between items-center shadow-md w-full">
       {/* Logo / Navn */}
@@ -29,7 +32,7 @@ function Header() {
       >
         <svg 
           viewBox="0 0 100 60" width="30" height="30" 
-          className="rounded-lg"  // Afrundet menuikon
+          className="rounded-lg"
         >
           <rect width="100" height="10" rx="5"></rect>
           <rect y="25" width="100" height="10" rx="5"></rect>
@@ -44,7 +47,7 @@ function Header() {
         
         {/* Close Button */}
         <button 
-          onClick={() => setIsOpen(false)} 
+          onClick={closeMenu} 
           className="text-primary focus:outline-none absolute top-5 right-5"
         >
           <svg viewBox="0 0 24 24" width="24" height="24" 
@@ -56,11 +59,11 @@ function Header() {
 
         {/* Mobile Links */}
         <div className="flex flex-col items-center justify-center h-full space-y-6">
-          <NavLink to="/" className="font-body hover:text-secondary text-center" activeClassName="underline">Home</NavLink>
-          <NavLink to="/resume" className="font-body hover:text-secondary text-center" activeClassName="underline">Resume</NavLink>
-          <NavLink to="/work" className="font-body hover:text-secondary text-center" activeClassName="underline">Work</NavLink>
-          <NavLink to="/about" className="font-body hover:text-secondary text-center" activeClassName="underline">About Me</NavLink>
-          <button className="bg-primary text-white font-body px-6 py-3 rounded-lg hover:bg-secondary mt-4">
+          <NavLink to="/" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>Home</NavLink>
+          <NavLink to="/resume" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>Resume</NavLink>
+          <NavLink to="/work" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>Work</NavLink>
+          <NavLink to="/about" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>About Me</NavLink>
+          <button className="bg-primary text-white font-body px-6 py-3 rounded-lg hover:bg-secondary mt-4" onClick={closeMenu}>
             Let's talk
           </button>
         </div>
