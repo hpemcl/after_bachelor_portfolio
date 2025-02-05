@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-
 function CoffeeNr1() {
   const [isHovered, setIsHovered] = useState(false);
+
+  // Scroll til toppen ved sideskift
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-start px-5 py-10 bg-gradient-to-b from-primary to-accent text-text">
@@ -108,7 +112,7 @@ function CoffeeNr1() {
 
         {/* NEXT PROJECT BUTTON */}
         <div className="mt-16 text-center">
-          <Link to="/kmf">
+          <Link to="/kmf" onClick={() => window.scrollTo(0, 0)}>
             <motion.button
               className="bg-secondary text-white font-body px-6 py-3 rounded-lg shadow-lg hover:bg-primary transition-all duration-300"
               whileHover={{ scale: 1.1 }}

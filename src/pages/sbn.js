@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-
 function SBN() {
   const [isHovered, setIsHovered] = useState(false);
+
+  // Scroll til toppen ved sideskift
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-start px-5 py-10 bg-gradient-to-b from-primary to-accent text-text">
@@ -13,14 +17,19 @@ function SBN() {
         <motion.h1
           className="text-3xl md:text-6xl font-heading text-background text-center mb-4"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           Sund By Netværket
         </motion.h1>
-        <p className="text-center text-sm md:text-lg font-body text-background mb-10">
+        <motion.p
+          className="text-center text-sm md:text-lg font-body text-background mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           A digital platform dedicated to promoting health and community well-being through innovative web solutions.
-        </p>
+        </motion.p>
 
         {/* INFO SECTION */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center mb-10">
@@ -34,7 +43,7 @@ function SBN() {
               key={index}
               className="border border-background p-3 md:p-4 rounded-lg text-background font-body"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <h3 className="text-xs md:text-sm uppercase text-secondary">{item.title}</h3>
@@ -44,11 +53,13 @@ function SBN() {
         </div>
 
         {/* IMAGE WITH SMOOTH OVERLAY */}
-        <div
+        <motion.div
           className="relative rounded-lg overflow-hidden shadow-lg mb-10 cursor-pointer"
-          onTouchStart={() => setIsHovered(!isHovered)}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
         >
           <motion.img
             src="/images/sbn-billede.png"
@@ -62,19 +73,23 @@ function SBN() {
             animate={{ opacity: isHovered ? 0 : 0.5 }}
             transition={{ duration: 0.5 }}
           />
-        </div>
+        </motion.div>
 
         {/* NEW LAYOUT - LEFT TEXT, RIGHT BOXES */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-          {/* LEFT SIDE */}
-          <div className="text-center md:text-left">
+          <motion.div
+            className="text-center md:text-left"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <h3 className="text-sm md:text-xl font-body text-background uppercase">
               Client - Digital Health & Community Engagement
             </h3>
             <h2 className="text-2xl md:text-4xl font-heading text-background mt-2">
               Building a platform that supports healthier communities.
             </h2>
-          </div>
+          </motion.div>
 
           {/* RIGHT SIDE - BOXES */}
           <div className="grid grid-cols-1 gap-6">
@@ -96,7 +111,7 @@ function SBN() {
                 key={index}
                 className="bg-background p-4 md:p-6 rounded-lg text-text"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <h3 className="text-base md:text-lg font-heading">{item.title}</h3>
@@ -108,16 +123,18 @@ function SBN() {
 
         {/* NEXT PROJECT BUTTON */}
         <div className="mt-16 text-center">
-          <Link to="/coffeenr1">
+          <Link to="/coffeenr1" onClick={() => window.scrollTo(0, 0)}>
             <motion.button
               className="bg-secondary text-white font-body px-6 py-3 rounded-lg shadow-lg hover:bg-primary transition-all duration-300"
               whileHover={{ scale: 1.1 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
             >
               Next Project: Coffee No.1 →
             </motion.button>
           </Link>
         </div>
-
       </div>
     </section>
   );

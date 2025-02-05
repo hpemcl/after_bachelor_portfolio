@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 function BachelorProjekt() {
   const [isHovered, setIsHovered] = useState(false);
+
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-start px-5 py-10 bg-gradient-to-b from-primary to-accent text-text">
@@ -12,35 +17,49 @@ function BachelorProjekt() {
         <motion.h1
           className="text-3xl md:text-6xl font-heading text-background text-center mb-4"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
         >
           Bachelor Project
         </motion.h1>
-        <p className="text-center text-sm md:text-lg font-body text-background mb-10">
+        <motion.p
+          className="text-center text-sm md:text-lg font-body text-background mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
           My final bachelor's project, where I developed a website using WordPress as a headless CMS and React for the frontend for Sund By Netværket. The project demonstrated my ability to combine CMS and modern web technologies, and I achieved the highest grade, 12, for my work.
-        </p>
+        </motion.p>
 
         {/* INFO SECTION */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center mb-10">
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           {[
             { title: "Client", value: "Sund By Netværket" },
             { title: "Timeline", value: "12 weeks" },
             { title: "Services", value: "Headless CMS, Web Development" },
-            { title: "Website", value: <a href="https://sund-by-net.dk/" className="underline text-background">sund-by-net.dk</a> }
+            { title: "Website", value: <a href="https://hannahpemclausen.dk/sundbynet-bachelor/react/" className="underline text-background">sund-by-net.dk</a> }
           ].map((item, index) => (
             <motion.div
               key={index}
               className="border border-background p-3 md:p-4 rounded-lg text-background font-body"
+              whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
               <h3 className="text-xs md:text-sm uppercase text-secondary">{item.title}</h3>
               <p className="text-base md:text-lg font-semibold">{item.value}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* IMAGE WITH SMOOTH OVERLAY */}
         <div
@@ -64,19 +83,43 @@ function BachelorProjekt() {
         </div>
 
         {/* NEW LAYOUT - LEFT TEXT, RIGHT BOXES */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           {/* LEFT SIDE */}
           <div className="text-center md:text-left">
-            <h3 className="text-sm md:text-xl font-body text-background uppercase">
+            <motion.h3 
+              className="text-sm md:text-xl font-body text-background uppercase"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               Prof. Bachelor Project
-            </h3>
-            <h2 className="text-2xl md:text-4xl font-heading text-background mt-2">
+            </motion.h3>
+            <motion.h2 
+              className="text-2xl md:text-4xl font-heading text-background mt-2"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               Headless CMS & Modern Frontend Development.
-            </h2>
+            </motion.h2>
           </div>
 
           {/* RIGHT SIDE - BOXES */}
-          <div className="grid grid-cols-1 gap-6">
+          <motion.div 
+            className="grid grid-cols-1 gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             {[
               {
                 title: "Challenge",
@@ -94,20 +137,27 @@ function BachelorProjekt() {
               <motion.div
                 key={index}
                 className="bg-background p-4 md:p-6 rounded-lg text-text"
+                whileInView={{ opacity: 1, y: 0 }}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
                 <h3 className="text-base md:text-lg font-heading">{item.title}</h3>
                 <p className="mt-2 text-xs md:text-sm font-body">{item.description}</p>
               </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* NEXT PROJECT BUTTON */}
-        <div className="mt-16 text-center">
-          <Link to="/sbn">
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <Link to="/sbn" onClick={() => window.scrollTo(0, 0)}>
             <motion.button
               className="bg-secondary text-white font-body px-6 py-3 rounded-lg shadow-lg hover:bg-primary transition-all duration-300"
               whileHover={{ scale: 1.1 }}
@@ -115,7 +165,8 @@ function BachelorProjekt() {
               Next Project: Sund By Netværket →
             </motion.button>
           </Link>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );

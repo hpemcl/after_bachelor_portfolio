@@ -4,29 +4,29 @@ import { motion } from 'framer-motion';
 function Home() {
   return (
     <section className="bg-background min-h-screen flex items-center justify-center p-5 lg:p-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10 max-w-5xl text-center lg:text-left">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl text-center lg:text-left">
         
         {/* Tekst sektion */}
-        <div className="flex flex-col items-center lg:items-start p-0 space-y-2">
-          <h1 className="font-heading text-4xl lg:text-5xl text-primary pt-2">
+        <div className="flex flex-col items-center lg:items-start space-y-4">
+          <h1 className="font-heading text-4xl lg:text-5xl text-primary">
             Hi, I'm Hannah <br /> Web Designer & Developer
           </h1>
-          <p className="font-body text-sm lg:text-lg lg:py-4 py-2">
+          <p className="font-body text-sm lg:text-lg">
             I specialize in creating visually appealing and highly functional websites. 
             My designs are intuitive, modern, and aligned with business needs.
           </p>
           <a 
-            href="/cv/Hannah_Resume.pdf" 
+            href="/assets/HannahClausen-CV.pdf" 
             download
-            className="bg-primary text-white font-body font-medium px-4 py-2 lg:px-6 lg:py-3 rounded-lg shadow-md hover:bg-accent transition duration-300 mx-auto lg:mx-0 lg:self-start"
+            className="bg-primary text-white font-body font-medium px-5 py-3 rounded-lg shadow-md hover:bg-accent transition duration-300"
           >
             Download My CV
           </a>
         </div>
 
-        {/* Billede sektion med baggrunds-kort */}
+        {/* Billede sektion med centreret alignment på tablet */}
         <motion.div 
-          className="relative grid place-items-center w-full max-w-xs sm:max-w-sm h-auto"
+          className="relative flex justify-center items-center w-full max-w-xs sm:max-w-sm mx-auto lg:mx-0"
           initial={{ scale: 0.95 }}
           whileHover={{ scale: 1.05, rotate: 10 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}

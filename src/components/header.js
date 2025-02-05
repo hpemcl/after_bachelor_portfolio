@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +20,11 @@ function Header() {
         <NavLink to="/resume" className="font-body hover:text-secondary" activeClassName="underline">Resume</NavLink>
         <NavLink to="/work" className="font-body hover:text-secondary" activeClassName="underline">Work</NavLink>
         <NavLink to="/about" className="font-body hover:text-secondary" activeClassName="underline">About Me</NavLink>
-        <button className="bg-primary text-white font-body px-6 py-2 rounded-lg hover:bg-secondary">
-          Let's talk
-        </button>
+        <Link to="/contact">
+          <button className="bg-primary text-white font-body px-6 py-2 rounded-lg hover:bg-secondary">
+            Let's talk
+          </button>
+        </Link>
       </nav>
 
       {/* Mobile Burger Menu Button */}
@@ -44,7 +46,7 @@ function Header() {
       <nav className={`fixed top-0 right-0 h-full bg-white shadow-md z-50 transform 
                       ${isOpen ? "translate-x-0" : "translate-x-full"} 
                       ease-in-out transition-all duration-300 w-64 sm:w-80 lg:hidden`}>
-        
+
         {/* Close Button */}
         <button 
           onClick={closeMenu} 
@@ -63,9 +65,11 @@ function Header() {
           <NavLink to="/resume" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>Resume</NavLink>
           <NavLink to="/work" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>Work</NavLink>
           <NavLink to="/about" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>About Me</NavLink>
-          <button className="bg-primary text-white font-body px-6 py-3 rounded-lg hover:bg-secondary mt-4" onClick={closeMenu}>
-            Let's talk
-          </button>
+          <Link to="/contact">
+            <button className="bg-primary text-white font-body px-6 py-3 rounded-lg hover:bg-secondary mt-4" onClick={closeMenu}>
+              Let's talk
+            </button>
+          </Link>
         </div>
       </nav>
     </header>
