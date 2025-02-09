@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,12 +16,24 @@ function Header() {
 
       {/* Desktop Navigation */}
       <nav className="hidden lg:flex items-center space-x-6">
-        <NavLink to="/" className="font-body hover:text-secondary" activeClassName="underline">Home</NavLink>
-        <NavLink to="/resume" className="font-body hover:text-secondary" activeClassName="underline">Resume</NavLink>
-        <NavLink to="/work" className="font-body hover:text-secondary" activeClassName="underline">Work</NavLink>
-        <NavLink to="/about" className="font-body hover:text-secondary" activeClassName="underline">About Me</NavLink>
+        {["Home", "Resume", "Work", "Design", "About"].map((name, index) => {
+          const path = name === "Home" ? "/" : `/${name.toLowerCase().replace(" ", "")}`;
+          return (
+            <NavLink
+              key={index}
+              to={path}
+              className={({ isActive }) =>
+                `relative font-body text-base italic hover:text-secondary hover:font-semibold transition duration-300 ${
+                  isActive ? "font-semibold not-italic text-black after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[3px] after:bg-black after:rounded-full" : ""
+                }`
+              }
+            >
+              {name}
+            </NavLink>
+          );
+        })}
         <Link to="/contact">
-          <button className="bg-primary text-white font-body px-6 py-2 rounded-lg hover:bg-secondary">
+          <button className="bg-primary text-white font-body px-6 py-2 rounded-lg hover:text-black hover:font-semibold hover:bg-secondary">
             Let's talk
           </button>
         </Link>
@@ -61,12 +73,28 @@ function Header() {
 
         {/* Mobile Links */}
         <div className="flex flex-col items-center justify-center h-full space-y-6">
-          <NavLink to="/" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>Home</NavLink>
-          <NavLink to="/resume" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>Resume</NavLink>
-          <NavLink to="/work" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>Work</NavLink>
-          <NavLink to="/about" className="font-body hover:text-secondary text-center" activeClassName="underline" onClick={closeMenu}>About Me</NavLink>
+          {["Home", "Resume", "Work", "Design", "About"].map((name, index) => {
+            const path = name === "Home" ? "/" : `/${name.toLowerCase().replace(" ", "")}`;
+            return (
+              <NavLink
+                key={index}
+                to={path}
+                className={({ isActive }) =>
+                  `relative font-body text-center hover:text-secondary transition duration-300 ${
+                    isActive ? "font-semibold text-black after:content-[''] after:absolute after:left-1/2 after:bottom-[-4px] after:w-1/2 after:h-[3px] after:bg-black after:rounded-full after:-translate-x-1/2" : ""
+                  }`
+                }
+                onClick={closeMenu}
+              >
+                {name}
+              </NavLink>
+            );
+          })}
           <Link to="/contact">
-            <button className="bg-primary text-white font-body px-6 py-3 rounded-lg hover:bg-secondary mt-4" onClick={closeMenu}>
+            <button 
+              className="bg-primary text-white font-body px-6 py-3 rounded-lg hover:bg-secondary mt-4"
+              onClick={closeMenu}
+            >
               Let's talk
             </button>
           </Link>

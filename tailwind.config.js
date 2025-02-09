@@ -8,6 +8,7 @@ module.exports = {
         "screen-50": "50vh", // Ny højde som fylder halvdelen af skærmen
         "screen-65": "65vh",
         "screen-75": "75vh",
+        "screen-80": "80vh",
       },
       colors: {
         accent: "#4c342b",

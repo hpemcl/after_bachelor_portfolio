@@ -7,6 +7,7 @@ import Resume from './pages/resume';
 import Work from './pages/work';
 import About from './pages/about';
 import Contact from './pages/contact';
+import Design from './pages/design';
 import BachelorProjekt from './pages/bachelorprojekt';
 import CoffeeNr1 from './pages/coffeenr1';
 import KarinMargaritaFrei from './pages/kmf';
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/work" element={<Work />} />
+          <Route path="/design" element={<Design />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/bachelorprojekt" element={<BachelorProjekt />} />

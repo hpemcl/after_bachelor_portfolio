@@ -88,9 +88,11 @@ const Resume = () => {
               <ul className="space-y-2">
                 {[
                   "Adobe Premiere Pro",
-                  "Illustrator",
-                  "Photoshop",
-                  "Indesign",
+                  "Adobe After Effects",
+                  "Adobe Illustrator",
+                  "Adobe Photoshop",
+                  "Adobe Indesign",
+                  "Adobe Lightroom",
                   "Adobe XD",
                   "Figma",
                 ].map((skill, index) => (

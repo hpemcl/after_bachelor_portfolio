@@ -11,15 +11,15 @@ function Home() {
           <h1 className="font-heading text-4xl lg:text-5xl text-primary">
             Hi, I'm Hannah <br /> Web Designer & Developer
           </h1>
-          <p className="font-body text-sm lg:text-lg">
+          <p className="font-body text-base lg:text-lg">
             I specialize in creating visually appealing and highly functional websites. 
             My designs are intuitive, modern, and aligned with business needs.
           </p>
           <a 
             href="/assets/HannahClausen-CV.pdf" 
             download
-            className="bg-primary text-white font-body font-medium px-5 py-3 rounded-lg shadow-md hover:bg-accent transition duration-300"
-          >
+            className="bg-primary text-base text-white font-body font-semibold px-5 py-3 rounded-lg shadow-md hover:bg-accent transition duration-300"
+          > 
             Download My CV
           </a>
         </div>
@@ -42,7 +42,7 @@ function Home() {
           {/* Forgrunds-billedet */}
           <div className="relative z-10">
             <img 
-              src="/images/HannahClausen-profilbillede.png" 
+              src="/images/ny-pb.jpg" 
               alt="Hannah Clausen" 
               className="w-full max-w-xs sm:max-w-sm object-cover rounded-lg"
             />
